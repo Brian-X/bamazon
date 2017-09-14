@@ -35,7 +35,6 @@ function start() {
 
 function updateStock(id, quantity, oldQuantity) {
   console.log("You made a purchase!");
-  console.log("You made a purchase!");
   var query = connection.query(
   "UPDATE products SET ? Where ?",
   [
