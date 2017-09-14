@@ -34,7 +34,8 @@ function start() {
 }
 
 function updateStock(id, quantity, oldQuantity) {
-  console.log("updating inventory ...");
+  console.log("You made a purchase!");
+  console.log("You made a purchase!");
   var query = connection.query(
   "UPDATE products SET ? Where ?",
   [
@@ -49,7 +50,7 @@ function updateStock(id, quantity, oldQuantity) {
     // console.log(res.affectedRows + " products updated!\n");
       // Call deleteProduct AFTER the UPDATE completes
     // deleteProduct();
-  console.log("inventory updates");
+  // console.log("inventory updates");
   })
 };
 
@@ -87,14 +88,11 @@ function askCustomer() {
         console.log(results);
         if (answer.quantity <= results[0].stock_quantity) {
           console.log("We have enough for you to buy.");
-          //update query
-            updateStock(answer.id, answer.quantity, results[0].stock_quantity);
-          
-          
-
-          //else we do not have enough to purchase
-            //refire ask customer
+          updateStock(answer.id, answer.quantity, results[0].stock_quantity);
+          } else {
+            console.log("We do not have enough for you to purchase.");
         }
+        askCustomer();
       })
     })
 }
